@@ -20,10 +20,24 @@ class Users::SessionsController < Devise::SessionsController
       }
     end
   end
+
+  def get_current_user
+    if logged_in?
+      render json: current_user
+    else
+      render json: {
+        error: "No one logged in"
+      }
+    end
+  end
+
   # DELETE /resource/sign_out
-  # def destroy
-  #   super
-  # end
+  def destroy
+    session.clear
+    render json: {
+      notice: "successfully logged out"
+    }
+  end
 
   # protected
 
