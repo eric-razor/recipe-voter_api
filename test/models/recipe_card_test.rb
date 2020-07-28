@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class TickerTest < ActiveSupport::TestCase
+class RecipeCardTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

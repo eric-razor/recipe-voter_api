@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_25_201042) do
+ActiveRecord::Schema.define(version: 2020_07_28_170323) do
 
-  create_table "notes", force: :cascade do |t|
+  create_table "dishes", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "tickers", force: :cascade do |t|
+  create_table "recipe_cards", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
