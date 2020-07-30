@@ -9,7 +9,5 @@ Rails.application.routes.draw do
   end
 
 
-  resources :users
-  resources :tickers
-  resources :notes
 end
+# will need an account to save cards

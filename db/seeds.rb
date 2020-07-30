@@ -6,4 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-person = User.create!(email:"person@example.com",password:"password")
+person = User.create!(username: "boloni", email:"e@em.com",password:"password")
+burger = RecipeCard.create!(recipe_name:"Burger",recipe_steps:"1.open package, 2.cook it 3. eat it")
+
+# dish = Dish.create!(name:"American") 
