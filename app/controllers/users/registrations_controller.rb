@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  before_action :configure_sign_up_params, only: [:create]
+  # before_action :configure_permitted_parameters, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  def new
-
-  end
+  # def new
+  #
+  # end
 
   # POST /resource
   def create
@@ -16,8 +16,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user.email = params[:email]
     @user.password =  params[:password]
     @user.save
-
-    byebug
 
     if @user.save
       render json: @user, status: :created, location: @user

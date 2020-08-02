@@ -8,8 +8,4 @@ Rails.application.routes.draw do
       get "/currentuser", to: "users/sessions#get_current_user"
   end
 
-
-  resources :users
-  resources :tickers
-  resources :notes
 end
