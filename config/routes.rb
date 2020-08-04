@@ -8,6 +8,6 @@ Rails.application.routes.draw do
       get "/currentuser", to: "users/sessions#get_current_user"
   end
 
+  get "/cookiecardz", to: "cookiecardz/cardz#index"
 
 end
-# will need an account to save cards
