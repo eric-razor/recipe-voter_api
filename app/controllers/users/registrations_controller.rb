@@ -1,41 +1,31 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  before_action :configure_sign_up_params, only: [:create]
+  # before_action :configure_permitted_parameters, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  def new
-
-  end
+  # def new
+  #
+  # end
 
   # POST /resource
   def create
-    @resource = build_resource(devise_parameter_sanitizer.sanitize(:sign_up))
-    @resource.save
-    # puts "username: #{params[:username]}"
-    # puts "email: #{params[:email]}"
-    # puts "password: #{params[:password]}"
-    #
-    # @user = User.new
-    # @user.username = params[:username]
-    # @user.email = params[:email]
-    # @user.password =  params[:password]
-    # @user.save
+    @user = User.new
+    @user.username = params[:username]
+    @user.email = params[:email]
+    @user.password =  params[:password]
+    @user.save
 
-
-    if @resource.save
-      render json: @resource, status: :created, location: @resource
+    if @user.save
+      render json: @user, status: :created, location: @user
     else
       resp = {
-        error: @resource.errors.full_messages.to_sentence
+        error: @user.errors.full_messages.to_sentence
       }
       render json: resp, status: :unprocessable_entity
-      byebug
     end
-    # puts params
-    # @resource = User.create(configure_sign_up_params)
-    # byebug
+
   end
 
   # GET /resource/edit
@@ -64,19 +54,20 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   protected
 
-  def sign_up_params
-    params.require(:user).permit(:username, :email, :password)
-  end
-
-  # If you have extra params to permit, append them to the sanitizer.
-  def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:username,:email])
-  end
-
-  # If you have extra params to permit, append them to the sanitizer.
-  def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:username,:email])
-  end
+  # FIXME: devise strong are not permitting values 🤔
+  # def sign_up_params
+  #   params.require(:user).permit(:username, :email, :password)
+  # end
+  #
+  # # If you have extra params to permit, append them to the sanitizer.
+  # def configure_sign_up_params
+  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:username,:email])
+  # end
+  #
+  # # If you have extra params to permit, append them to the sanitizer.
+  # def configure_account_update_params
+  #   devise_parameter_sanitizer.permit(:account_update, keys: [:username,:email])
+  # end
 
   # The path used after sign up.
   # def after_sign_up_path_for(resource)

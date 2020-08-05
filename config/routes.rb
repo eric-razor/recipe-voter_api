@@ -7,8 +7,5 @@ Rails.application.routes.draw do
       delete "/logout", to: "users/sessions#destroy"
       get "/currentuser", to: "users/sessions#get_current_user"
   end
-
   get "/cookiecardz", to: "cookiecardz/cardz#index"
   post "/cookiecardz", to: "cookiecardz/cardz#create"
-
-end
