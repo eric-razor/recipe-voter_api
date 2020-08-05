@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   end
 
   get "/cookiecardz", to: "cookiecardz/cardz#index"
+  post "/cookiecardz", to: "cookiecardz/cardz#create"
 
 end

@@ -1,4 +1,4 @@
-class CardzController < ApplicationController
+class Cookiecardz::CardzController < ApplicationController
   def index
      @crecipe_cards = RecipeCard.all
    end
@@ -7,11 +7,8 @@ class CardzController < ApplicationController
      @recipe_card = RecipeCard.find(params[:id])
    end
 
-   def new
-     
-   end
-
    def create
-     @recipe_card = RecipeCard.new
+     byebug
+     @recipe_card = RecipeCard.create(recipe_params)
    end
  end
