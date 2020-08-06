@@ -1,8 +1,5 @@
-# frozen_string_literal: true
+class Api::V1::SessionsController < SessionsController
 
-class Users::SessionsController < Devise::SessionsController
-  # before_action :configure_permitted_parameters, only: [:create]
-  before_action :authenticate_user!
   # GET /resource/sign_in
   # def new
   #   super

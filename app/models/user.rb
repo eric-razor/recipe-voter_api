@@ -1,10 +1,10 @@
 class User < ApplicationRecord
-  self.table_name = "users"
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+  has_secure_password
 
-  has_many :recipe_cards
-  has_many :dishes, through: :recipe_cards
+  has_many :dishes
+  has_many :recipe_cards, through: :dishes
+
+  validates :name, :email. presence: true
+  validates :email, uniqueness: true
+
 end
