@@ -1,4 +1,4 @@
-class Api::V1::SessionsController < SessionsController
+class Api::V1::SessionsController < ApplicationController
 
   # GET /resource/sign_in
   # def new
@@ -8,7 +8,8 @@ class Api::V1::SessionsController < SessionsController
   # POST /resource/sign_in
   def create
     @user = User.find_by(email: params[:session][:email])
-    if @user
+
+    if @user && @user.authenticate(params[:session][:password])
       session[:user_id] = @user.id
       render json: @user
     else
@@ -36,10 +37,4 @@ class Api::V1::SessionsController < SessionsController
     }
   end
 
-  # protected
-
-  # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_in_params
-    # devise_parameter_sanitizer.permit(:sign_in, keys: [:email])
-  # end
 end
