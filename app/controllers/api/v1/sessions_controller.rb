@@ -1,11 +1,5 @@
 class Api::V1::SessionsController < ApplicationController
 
-  # GET /resource/sign_in
-  # def new
-  #   super
-  # end
-
-  # POST /resource/sign_in
   def create
     @user = User.find_by(email: params[:session][:email])
 
@@ -29,7 +23,6 @@ class Api::V1::SessionsController < ApplicationController
     end
   end
 
-  # DELETE /resource/sign_out
   def destroy
     session.clear
     render json: {
