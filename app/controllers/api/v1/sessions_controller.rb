@@ -1,4 +1,6 @@
 class Api::V1::SessionsController < ApplicationController
+  include CurrentUserConcern
+  before_action :set_current_user
 
   def create
     @user = User.find_by(email: params[:session][:email])
@@ -8,7 +10,7 @@ class Api::V1::SessionsController < ApplicationController
       render json: @user
     else
       render json: {
-        error: "Invalid credentials (rails side)"
+        error: {status: 401 }
       }
     end
   end
@@ -29,5 +31,4 @@ class Api::V1::SessionsController < ApplicationController
       notice: "successfully logged out"
     }
   end
-
 end

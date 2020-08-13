@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   delete "api/v1/logout", to: "api/v1/sessions#destroy"
   get "api/v1/currentuser", to: "api/v1/sessions#get_current_user"
 
+  post "/cookiecardz", to: "api/v1/cards#create"
+
 end

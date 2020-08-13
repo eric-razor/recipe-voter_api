@@ -30,3 +30,4 @@ class Api::V1::UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:email, :password_digest)
   end
+end
