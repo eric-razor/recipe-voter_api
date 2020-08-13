@@ -7,5 +7,5 @@ class CreateCards < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
-  endrail
+  end
 end

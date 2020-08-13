@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 2020_08_13_001130) do
 
   create_table "dishes", force: :cascade do |t|
     t.string "category"
+    t.integer "user_id"
+    t.integer "card_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

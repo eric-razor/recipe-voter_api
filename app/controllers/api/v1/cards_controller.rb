@@ -12,10 +12,11 @@ class Api::V1::CardsController < ApplicationController
    end
 
    def create
-     @cookie_card = CardSerializer.new(recipe_params)
+     @cookie_card = Card.create!(recipe_params)
      byebug
-     if @cookie_card
-       render json: CardSerializer.create!(@cookie_card), status: :created
+
+     if @cookie_card.save
+       render json: @cookie_card, status: :created
      else
        error_resp = {
          error: @cookie_card.errors.full_messages.to_sentence
@@ -27,6 +28,6 @@ class Api::V1::CardsController < ApplicationController
    private
 
    def recipe_params
-     params.require(:card).permit(:recipe_name,:recipe_steps,:recipe_ingredients)
+     params.require(:card).permit(:recipe_name,:recipe_steps,:recipe_ingredients, :user_id, :card_id )
    end
  end
