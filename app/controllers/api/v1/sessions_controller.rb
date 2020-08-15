@@ -1,8 +1,9 @@
 class Api::V1::SessionsController < ApplicationController
-  include CurrentUserConcern
-  before_action :set_current_user
+  # include CurrentUserConcern
+  # before_action :set_current_user
 
   def create
+    byebug
     @user = User.find_by(email: params[:session][:email])
 
     if @user && @user.authenticate(params[:session][:password])

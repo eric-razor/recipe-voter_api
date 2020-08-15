@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :dishes
   has_many :cards, through: :dishes
 
-  validates :name, :email, presence: true, uniqueness: true
+  validates :name, :email, :password, presence: true
+  validates :name, :email, uniqueness: true
 
  end
