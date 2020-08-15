@@ -13,7 +13,6 @@ class Api::V1::CardsController < ApplicationController
 
    def create
      @cookie_card = Card.create!(recipe_params)
-     byebug
 
      if @cookie_card.save
        render json: @cookie_card, status: :created
