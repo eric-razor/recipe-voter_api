@@ -1,6 +1,7 @@
 class Api::V1::CardsController < ApplicationController
 
   def index
+    byebug
     if logged_in?
       @cookie_cards = current_user.cards
     end
