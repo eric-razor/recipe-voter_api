@@ -1,4 +1,5 @@
 class Api::V1::UsersController < ApplicationController
+  before_action :set_user, only: [:show, :update, :destroy]
 
   def index
     @users = User.all
@@ -12,10 +13,10 @@ class Api::V1::UsersController < ApplicationController
 
   def create
     @user = User.create!(signup_params)
-    byebug
-    if @user.save
+    if @user.valid?
       session[:user_id] = @user.id
-      render json: @user
+      byebug
+      render json: @user, status: :created
     else
       render json: {
         status: 500
@@ -24,6 +25,10 @@ class Api::V1::UsersController < ApplicationController
   end
 
   private
+
+  def set_user
+    @user = User.find(params[:id])
+  end
 
   def signup_params
     params.require(:user).permit(:name,:email,:password )
