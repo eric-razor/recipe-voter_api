@@ -1,15 +1,14 @@
 class Api::V1::CardsController < ApplicationController
 
   def index
-    byebug
     if logged_in?
       @cookie_cards = current_user.cards
     end
-      render json: CardSerializer.new(@cookie_cards)
+      render json: @cookie_cards
    end
 
    def show
-     @cookie_card = CardSerializer.find(params[:id])
+     @cookie_card = Card.find(params[:id])
    end
 
    def create

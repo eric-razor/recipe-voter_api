@@ -5,6 +5,6 @@ class User < ApplicationRecord
   has_many :cards, through: :dishes
 
   validates :name, :email, :password, presence: true
-  validates :email, uniqueness: true
+  validates :email, uniqueness: { case_sensitive: false }
 
  end
