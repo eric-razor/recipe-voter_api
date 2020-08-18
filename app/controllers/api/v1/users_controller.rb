@@ -13,9 +13,9 @@ class Api::V1::UsersController < ApplicationController
 
   def create
     @user = User.create!(signup_params)
+
     if @user.valid?
       session[:user_id] = @user.id
-      byebug
       render json: @user, status: :created
     else
       render json: {
