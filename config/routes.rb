@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get "api/v1/currentuser", to: "api/v1/sessions#get_current_user"
 
   get "api/v1/explore", to: "api/v1/dish#index"
-  get "api/v1/mycards", to: "api/v1/cards#index"
+  get "api/v1/cookiecards", to: "api/v1/cards#index"
   post "api/v1/cookiecards", to: "api/v1/cards#create"
 
 
