@@ -1,5 +1,5 @@
 class CardSerializer < ActiveModel::Serializer
-  attributes :id, :recipe_name, :recipe_steps, :recipe_ingredients
+  attributes :id, :recipe_name, :recipe_steps, :recipe_ingredients, :user_id
 
-  has_many :users, serializer: UserSerializer
+  belongs_to :user, serializer: UserSerializer
 end
