@@ -27,6 +27,6 @@ class Api::V1::CardsController < ApplicationController
    private
 
    def recipe_params
-     params.require(:card).permit(:recipe_name,:recipe_steps,:recipe_ingredients, :user_id, :card_id )
+     params.require(:card).permit(:recipe_name,:recipe_steps,:recipe_ingredients, :user_id )
    end
  end
