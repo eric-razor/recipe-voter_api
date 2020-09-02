@@ -8,7 +8,9 @@ class Api::V1::CardsController < ApplicationController
    end
 
    def show
+     byebug
      @cookie_card = Card.find(params[:id])
+     render json: @cookie_card
    end
 
    def create
