@@ -26,6 +26,21 @@ class Api::V1::CardsController < ApplicationController
      end
    end
 
+   def update
+     if @cookie_card.update(recipe_params)
+       render json: @cookie_card, status: :ok
+     else
+       error_resp = {
+         error: @cookie_card.errors.full_messages.to_sentence
+       }
+       render json: error_resp, status: :unprocessable_entity
+     end
+   end
+
+   def destroy
+     @cookie_card.destroy
+   end
+
    private
 
    def recipe_params
