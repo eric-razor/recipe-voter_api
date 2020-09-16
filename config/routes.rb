@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   get "api/v1/cookiecards", to: "api/v1/cards#index"
   post "api/v1/cookiecards", to: "api/v1/cards#create"
+  patch "api/v1/cookiecards/:id", to: "api/v1/cards#update"
 
   namespace :api do
     namespace :v1 do
