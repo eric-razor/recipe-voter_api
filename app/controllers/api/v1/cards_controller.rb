@@ -27,6 +27,8 @@ class Api::V1::CardsController < ApplicationController
    end
 
    def update
+     @cookie_card = Card.find(params[:id])
+     
      if @cookie_card.update(recipe_params)
        render json: @cookie_card, status: :ok
      else
@@ -38,7 +40,14 @@ class Api::V1::CardsController < ApplicationController
    end
 
    def destroy
-     @cookie_card.destroy
+     if @cookie_card.destroy
+       render json: {status: "successfully deleted"}, status: :ok
+     else
+       error_resp = {
+         error: @cookie_card.errors.full_messages.to_sentence
+       }
+       render json: error_resp, status: :unprocessable_entity
+     end
    end
 
    private
