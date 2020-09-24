@@ -8,7 +8,6 @@ class Api::V1::CardsController < ApplicationController
    end
 
    def show
-     byebug
      @cookie_card = Card.find(params[:id])
      render json: @cookie_card
    end
@@ -41,7 +40,7 @@ class Api::V1::CardsController < ApplicationController
 
    def destroy
      @cookie_card = Card.find(params[:id])
-     
+
      if @cookie_card.destroy
        render json: {status: "successfully deleted"}, status: :ok
      else
