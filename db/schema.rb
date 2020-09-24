@@ -10,12 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_13_001130) do
+ActiveRecord::Schema.define(version: 2020_09_24_021732) do
 
   create_table "cards", force: :cascade do |t|
     t.string "recipe_name"
     t.text "recipe_steps"
     t.text "recipe_ingredients"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string "item_name"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
