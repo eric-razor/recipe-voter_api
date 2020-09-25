@@ -1,10 +1,11 @@
 class Api::V1::ItemController < ApplicationController
   def index
     @items = Item.all
+
+    render json: @items
   end
 
   def create
-
     @item = Item.create!(item_params)
 
     if @item.save
