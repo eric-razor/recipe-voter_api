@@ -18,6 +18,11 @@ class Api::V1::ItemController < ApplicationController
     end
   end
 
+  def destroy
+    @item = Item.find(params[:id])
+    byebug
+  end
+
   private
 
   def item_params
