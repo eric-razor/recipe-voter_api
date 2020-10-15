@@ -8,18 +8,9 @@ Rails.application.routes.draw do
   get "api/v1/cookiecards", to: "api/v1/cards#index"
   get "api/v1/pantry", to: "api/v1/item#index"
   post "api/v1/pantry", to: "api/v1/item#create"
+  delete "api/v1/pantry/:id", to: "api/v1/item#destroy"
   post "api/v1/cookiecards", to: "api/v1/cards#create"
   patch "api/v1/cookiecards/:id", to: "api/v1/cards#update"
   delete "api/v1/cookiecards/:id", to: "api/v1/cards#destroy"
-
-  namespace :api do
-    namespace :v1 do
-      resources :users do
-        resources :cards
-        resources :items
-      end
-      resources :cards
-    end
-  end
 
 end
